@@ -67,19 +67,14 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var HelloWorld = _react2.default.createClass({
-	    displayName: "HelloWorld",
+	// var HelloWorld = React.createClass({
+	//     render: function() {
+	//         return (
+	//             <p>Hello, {this.props.greetTarget}!</p>
+	//         );
+	//     }
+	// })
 	
-	    render: function render() {
-	        return _react2.default.createElement(
-	            "p",
-	            null,
-	            "Hello, ",
-	            this.props.greetTarget,
-	            "!"
-	        );
-	    }
-	});
 	
 	var Menu = function (_React$Component) {
 	    _inherits(Menu, _React$Component);
@@ -116,10 +111,22 @@
 	    _createClass(BookList, [{
 	        key: "render",
 	        value: function render() {
+	            var books = this.props.books.map(function (book) {
+	                return _react2.default.createElement(
+	                    "li",
+	                    { key: book.bookId },
+	                    book.title
+	                );
+	            });
+	
 	            return _react2.default.createElement(
 	                "div",
 	                null,
-	                "Hello Book List!"
+	                _react2.default.createElement(
+	                    "ul",
+	                    null,
+	                    books
+	                )
 	            );
 	        }
 	    }]);
@@ -179,7 +186,18 @@
 	    function App() {
 	        _classCallCheck(this, App);
 	
-	        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	        var _this5 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+	
+	        _this5.state = {
+	            books: [{
+	                bookId: 1,
+	                title: "Great Expectations"
+	            }, {
+	                bookId: 2,
+	                title: "A Game of Thrones"
+	            }]
+	        };
+	        return _this5;
 	    }
 	
 	    _createClass(App, [{
@@ -189,7 +207,7 @@
 	                "div",
 	                null,
 	                _react2.default.createElement(Menu, null),
-	                _react2.default.createElement(BookList, null),
+	                _react2.default.createElement(BookList, { books: this.state.books }),
 	                _react2.default.createElement(BookDetail, null),
 	                _react2.default.createElement(AddBook, null)
 	            );
