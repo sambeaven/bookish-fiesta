@@ -171,7 +171,7 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                "div",
-	                null,
+	                { style: { border: 5, borderColor: "black", borderStyle: "solid" } },
 	                "Hello, Add Book!"
 	            );
 	        }

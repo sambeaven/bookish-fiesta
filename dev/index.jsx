@@ -12,49 +12,54 @@ import ReactDOM from "react-dom";
 
 
 class Menu extends React.Component {
-    render(){
-        return(<div>Hello Menu!</div>)
+    render() {
+        return (<div>Hello Menu!</div>)
     }
 }
 
 class BookList extends React.Component {
-    render(){
+    render() {
         const books = this.props.books.map((book) => {
-        return (
-            <li key={book.bookId}>{book.title}</li>
-        );
+            return (
+                <li key={book.bookId}>{book.title}</li>
+            );
         });
 
-        return(
+        return (
             <div>
                 <ul>
-{books}
+                    {books}
                 </ul>
 
             </div>
-            )
+        )
     }
 }
 
 class BookDetail extends React.Component {
-    render(){
-        return(<div>Hello Book Detail!</div>)
+    render() {
+        return (<div>Hello Book Detail!</div>)
     }
 }
 
 class AddBook extends React.Component {
     render() {
-        return (<div>Hello, Add Book!</div>)
+        return (<div style={{border: 5, borderColor: "black", borderStyle: "solid"}}>
+        Hello, Add Book!
+        
+
+        
+        </div>)
     }
 }
 
 class App extends React.Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
             books: [{
                 bookId: 1,
-                title: "Great Expectations" 
+                title: "Great Expectations"
             },
             {
                 bookId: 2,
@@ -62,15 +67,15 @@ class App extends React.Component {
             }]
         };
     }
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <Menu />
                 <BookList books={this.state.books} />
                 <BookDetail />
                 <AddBook />
             </div>
-            )
+        )
     }
 }
 
